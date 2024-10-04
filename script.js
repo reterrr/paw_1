@@ -27,4 +27,39 @@
       ex2Content.textContent='Numer telefonu jest poprawny';
     }
   })
+
+  const ex3Element=document.getElementById('ex3_element');
+  const ex3One=document.getElementById('ex3_one');
+  const ex3Two=document.getElementById('ex3_two');
+
+  //kiedy dropping start
+  ex3Element.addEventListener('dragstart', function(event){
+    event.dataTransfer.setData('text/plain', event.target.id);
+  });
+
+  //allow dropping into ex3_two
+  ex3Two.addEventListener('dragover', function(event) {
+    event.preventDefault();
+  });
+
+  //drop into ex3_two
+  ex3Two.addEventListener('drop', function(event){
+    event.preventDefault();
+    const elementId=event.dataTransfer.getData('text');
+    const element=document.getElementById(elementId);
+    ex3Two.append(element);
+  })
+
+  ex3One.addEventListener('dragover', function(event){
+    event.preventDefault();
+  });
+
+  ex3One.addEventListener('drop', function(event){
+    event.preventDefault();
+    const elementId=event.dataTransfer.getData('text')
+    const element=document.getElementById(elementId);
+    ex3One.append(element);
+  })
+
+
 })();
